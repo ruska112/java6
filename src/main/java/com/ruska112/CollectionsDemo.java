@@ -9,7 +9,7 @@ public class CollectionsDemo {
         }
         int result = 0;
         for (String str : strings) {
-            if (str.startsWith(String.valueOf(c))) {
+            if (!"".equals(str) && str.startsWith(String.valueOf(c))) {
                 result++;
             }
         }
