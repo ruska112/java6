@@ -7,6 +7,8 @@ import static com.ruska112.CollectionsDemo.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CollectionsDemoTest {
 
@@ -27,6 +29,16 @@ public class CollectionsDemoTest {
     ArrayList<Human> humans1;
     Human tmp;
     ArrayList<Human> withoutTmp;
+
+    // exercise 4
+
+    Set<Integer> set;
+    Set<Integer> set0;
+    Set<Integer> set1;
+    Set<Integer> set2;
+
+    ArrayList<Set<Integer>> setArrayList;
+    ArrayList<Set<Integer>> setArrayListWithoutSet;
 
     @Before
     public void setUp() throws Exception {
@@ -74,6 +86,36 @@ public class CollectionsDemoTest {
         withoutTmp.add(new Human("2", "2", "2", 2));
         withoutTmp.add(new Human("3", "3", "3", 3));
         withoutTmp.add(new Human("5", "5", "5", 5));
+
+        // exercise 4
+
+        set = new HashSet<>();
+        set.add(0);
+        set.add(1);
+
+        set0 = new HashSet<>();
+        set0.add(3);
+        set0.add(4);
+        set0.add(5);
+
+        set1 = new HashSet<>();
+        set1.add(-1);
+        set1.add(4);
+        set1.add(9);
+
+        set2 = new HashSet<>();
+        set2.add(0);
+        set2.add(999);
+
+        setArrayList = new ArrayList<>();
+        setArrayList.add(set);
+        setArrayList.add(set0);
+        setArrayList.add(set1);
+        setArrayList.add(set2);
+
+        setArrayListWithoutSet = new ArrayList<>();
+        setArrayListWithoutSet.add(set0);
+        setArrayListWithoutSet.add(set1);
     }
 
     @Test
@@ -143,5 +185,20 @@ public class CollectionsDemoTest {
     @Test(expected = IllegalArgumentException.class)
     public void deleteHumanInArrayListTest3() {
         deleteHumanInArrayList(humans1, null);
+    }
+
+    @Test
+    public void getSetsNotIntersectWithTest0() {
+        assertArrayEquals(setArrayListWithoutSet.toArray(), getSetsNotIntersectWith(setArrayList, set).toArray());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getSetsNotIntersectWithTest1() {
+        getSetsNotIntersectWith(null, set);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getSetsNotIntersectWithTest2() {
+        getSetsNotIntersectWith(setArrayList, null);
     }
 }
