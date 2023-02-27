@@ -60,6 +60,13 @@ public class Human {
         setAge(age);
     }
 
+    Human(Human copy) {
+        this.surname = copy.getSurname();
+        this.name = copy.getName();
+        this.fatherName = copy.getFatherName();
+        this.age = copy.getAge();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
