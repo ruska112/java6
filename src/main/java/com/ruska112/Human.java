@@ -3,11 +3,11 @@ package com.ruska112;
 import java.util.Objects;
 
 public class Human {
-    private String surname;
-    private String name;
-    private String fatherName;
+    protected String surname;
+    protected String name;
+    protected String fatherName;
 
-    private int age;
+    protected int age;
 
     public void setSurname(String surname) {
         if (surname == null) {

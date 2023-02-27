@@ -40,6 +40,17 @@ public class CollectionsDemoTest {
     ArrayList<Set<Integer>> setArrayList;
     ArrayList<Set<Integer>> setArrayListWithoutSet;
 
+    // exercise 5
+
+    Human human0;
+    Student human1;
+    Human human2;
+    Student human3;
+
+    ArrayList<Human> humans2;
+
+    ArrayList<Human> humans2maxAge;
+
     @Before
     public void setUp() throws Exception {
         // exercise 1
@@ -116,6 +127,22 @@ public class CollectionsDemoTest {
         setArrayListWithoutSet = new ArrayList<>();
         setArrayListWithoutSet.add(set0);
         setArrayListWithoutSet.add(set1);
+
+        // exercise 5
+        human0 = new Human("0", "0", "0", 77);
+        human1 = new Student("1", "1", "1", 19, "1");
+        human2 = new Human("2", "2", "2", 20);
+        human3 = new Student("3", "3", "3", 77, "3");
+
+        humans2 = new ArrayList<>();
+        humans2.add(human0);
+        humans2.add(human1);
+        humans2.add(human2);
+        humans2.add(human3);
+
+        humans2maxAge = new ArrayList<>();
+        humans2maxAge.add(human0);
+        humans2maxAge.add(human3);
     }
 
     @Test
@@ -147,24 +174,24 @@ public class CollectionsDemoTest {
 
     @Test
     public void getArrayListNamesakesTest0() {
-        assertArrayEquals(namesakes0.toArray(), getArrayListNamesakes(humans, namesake0).toArray());
+        assertArrayEquals(namesakes0.toArray(), getNamesakesArrayList(humans, namesake0).toArray());
     }
 
     @Test
     public void getArrayListNamesakesTest1() {
-        assertArrayEquals(namesakes1.toArray(), getArrayListNamesakes(humans, namesake1).toArray());
+        assertArrayEquals(namesakes1.toArray(), getNamesakesArrayList(humans, namesake1).toArray());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void getArrayListNamesakesTest2() {
         ArrayList<Human> emptyHumans = null;
-        getArrayListNamesakes(null, new Human("1", "1", "1", 1));
+        getNamesakesArrayList(null, new Human("1", "1", "1", 1));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void getArrayListNamesakesTest3() {
         Human emptyHuman = null;
-        getArrayListNamesakes(humans, emptyHuman);
+        getNamesakesArrayList(humans, emptyHuman);
     }
 
     @Test
@@ -200,5 +227,15 @@ public class CollectionsDemoTest {
     @Test(expected = IllegalArgumentException.class)
     public void getSetsNotIntersectWithTest2() {
         getSetsNotIntersectWith(setArrayList, null);
+    }
+
+    @Test
+    public void getMaxAgeHumanArrayListTest0(){
+        assertArrayEquals(humans2maxAge.toArray(), getMaxAgeHumanArrayList(humans2).toArray());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getMaxAgeHumanArrayListTest1(){
+        getMaxAgeHumanArrayList(null);
     }
 }

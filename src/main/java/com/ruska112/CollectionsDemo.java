@@ -1,6 +1,5 @@
 package com.ruska112;
 
-import javax.print.attribute.IntegerSyntax;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -18,7 +17,7 @@ public class CollectionsDemo {
         return result;
     }
 
-    public static ArrayList<Human> getArrayListNamesakes(ArrayList<Human> humans, Human namesake) {
+    public static ArrayList<Human> getNamesakesArrayList(ArrayList<Human> humans, Human namesake) {
         if (humans == null) {
             throw new IllegalArgumentException();
         }
@@ -72,6 +71,25 @@ public class CollectionsDemo {
                 result.add(set);
             }
             flag = true;
+        }
+        return result;
+    }
+
+    public static ArrayList<Human> getMaxAgeHumanArrayList(ArrayList<Human> humans) {
+        if (humans == null) {
+            throw new IllegalArgumentException();
+        }
+        ArrayList<Human> result = new ArrayList<>(humans.size());
+        int maxAge = 0;
+        for (Human human : humans) {
+            if (human.getAge() > maxAge) {
+                maxAge = human.getAge();
+            }
+        }
+        for (Human human : humans) {
+            if (human.getAge() == maxAge) {
+                result.add(human);
+            }
         }
         return result;
     }
