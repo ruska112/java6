@@ -31,4 +31,20 @@ public class CollectionsDemo {
         }
         return result;
     }
+
+    public static ArrayList<Human> deleteHumanInArrayList(ArrayList<Human> humans, Human delete) {
+        if (humans == null) {
+            throw new IllegalArgumentException();
+        }
+        if (delete == null) {
+            throw new IllegalArgumentException();
+        }
+        ArrayList<Human> result = new ArrayList<>(humans.size());
+        for (Human human : humans) {
+            if (!delete.equals(human)) {
+                result.add(new Human(human.getSurname(), human.getName(), human.getFatherName(), human.getAge()));
+            }
+        }
+        return result;
+    }
 }
