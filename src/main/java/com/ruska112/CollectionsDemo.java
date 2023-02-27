@@ -3,7 +3,7 @@ package com.ruska112;
 import java.util.ArrayList;
 
 public class CollectionsDemo {
-    public static int countStringsStartingWith(ArrayList<String> strings, char c) {
+    public static int getCountStringsStartingWith(ArrayList<String> strings, char c) {
         if (strings == null) {
             throw new IllegalArgumentException();
         }
