@@ -1,7 +1,7 @@
 package com.ruska112;
 
-import java.util.ArrayList;
-import java.util.Set;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class CollectionsDemo {
     public static int getCountStringsStartingWith(ArrayList<String> strings, char c) {
@@ -89,6 +89,40 @@ public class CollectionsDemo {
         for (Human human : humans) {
             if (human.getAge() == maxAge) {
                 result.add(human);
+            }
+        }
+        return result;
+    }
+
+    public static ArrayList<Human> getSortedArrayList(Human... humans) {
+        if (humans == null) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < humans.length; i++) {
+            for (int j = 0; j < humans.length; j++) {
+                if (humans[i].getSurname().compareTo(humans[j].getSurname()) < 0) {
+                    Human tmp = humans[i];
+                    humans[i] = humans[j];
+                    humans[j] = tmp;
+                }
+            }
+        }
+        return new ArrayList<>(Arrays.stream(humans).toList());
+    }
+
+    public static Set<Human> getHumanSet(Map<Integer, Human> humanMap, Set<Integer> integerSet) {
+        if (humanMap == null) {
+            throw new IllegalArgumentException();
+        }
+        if (integerSet == null) {
+            throw new IllegalArgumentException();
+        }
+        Set<Human> result = new HashSet<>();
+        for (int i = 0; i < humanMap.size(); i++) {
+            for (Integer num : integerSet) {
+                if (humanMap.containsKey(num)) {
+                    result.add(humanMap.get(num));
+                }
             }
         }
         return result;
