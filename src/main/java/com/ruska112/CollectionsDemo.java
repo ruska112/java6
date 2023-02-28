@@ -125,4 +125,18 @@ public class CollectionsDemo {
         }
         return result;
     }
+
+    public static ArrayList<Integer> getAdultId(Map<Integer, Human> humanMap) {
+        if (humanMap == null) {
+            throw new IllegalArgumentException();
+        }
+        ArrayList<Integer> result = new ArrayList<>();
+        Set<Integer> integers = humanMap.keySet();
+        for (Integer key : integers) {
+            if (humanMap.get(key).getAge() >= 18) {
+                result.add(key);
+            }
+        }
+        return result;
+    }
 }
