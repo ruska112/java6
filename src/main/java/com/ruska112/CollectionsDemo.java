@@ -118,11 +118,9 @@ public class CollectionsDemo {
             throw new IllegalArgumentException();
         }
         Set<Human> result = new HashSet<>();
-        for (int i = 0; i < humanMap.size(); i++) {
-            for (Integer num : integerSet) {
-                if (humanMap.containsKey(num)) {
-                    result.add(humanMap.get(num));
-                }
+        for (Integer num : integerSet) {
+            if (humanMap.containsKey(num)) {
+                result.add(humanMap.get(num));
             }
         }
         return result;
