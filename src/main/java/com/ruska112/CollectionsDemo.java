@@ -139,4 +139,16 @@ public class CollectionsDemo {
         }
         return result;
     }
+
+    public static Map<Integer, Integer> getAgeMap(Map<Integer, Human> humanMap) {
+        if (humanMap == null) {
+            throw new IllegalArgumentException();
+        }
+        Map<Integer, Integer> result = new HashMap<>();
+        Set<Integer> keys = humanMap.keySet();
+        for (Integer key : keys) {
+            result.put(key, humanMap.get(key).getAge());
+        }
+        return result;
+    }
 }
