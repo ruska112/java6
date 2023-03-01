@@ -151,4 +151,24 @@ public class CollectionsDemo {
         }
         return result;
     }
+
+    public static Map<Integer, ArrayList<Human>> getPeersHumanMap(Set<Human> humanSet) {
+        if (humanSet == null) {
+            throw new IllegalArgumentException();
+        }
+        Map<Integer, ArrayList<Human>> result = new HashMap<>();
+        ArrayList<Human> humanArrayList = new ArrayList<>();
+        int age;
+        for (Human human0 : humanSet) {
+            age = human0.getAge();
+            for (Human human1 : humanSet) {
+                if (age == human1.getAge()) {
+                    humanArrayList.add(human1);
+                }
+            }
+            result.put(age, new ArrayList<>(humanArrayList));
+            humanArrayList.clear();
+        }
+        return result;
+    }
 }
