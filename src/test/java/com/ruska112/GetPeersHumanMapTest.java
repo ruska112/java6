@@ -27,11 +27,11 @@ public class GetPeersHumanMapTest {
         humanSet.add(new Human("11", "11", "11", 1));
 
         human0.add(new Human("1", "1", "1", 1));
-        human0.add(new Human("11", "11", "11", 1));
         human0.add(new Student("1", "1", "1", 1, "1"));
+        human0.add(new Human("11", "11", "11", 1));
 
-        human1.add(new Student("22", "22", "22", 2, "22"));
         human1.add(new Student("2", "2", "2", 2, "2"));
+        human1.add(new Student("22", "22", "22", 2, "22"));
 
         human2.add(new Human("3", "3", "3", 3));
 

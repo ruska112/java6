@@ -156,6 +156,7 @@ public class CollectionsDemo {
         if (humanSet == null) {
             throw new IllegalArgumentException();
         }
+        HumanComparator humanComparator = new HumanComparator();
         Map<Integer, ArrayList<Human>> result = new HashMap<>();
         ArrayList<Human> humanArrayList = new ArrayList<>();
         int age;
@@ -166,6 +167,7 @@ public class CollectionsDemo {
                     humanArrayList.add(human1);
                 }
             }
+            humanArrayList.sort(humanComparator);
             result.put(age, new ArrayList<>(humanArrayList));
             humanArrayList.clear();
         }
