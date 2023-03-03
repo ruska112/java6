@@ -2,19 +2,14 @@ package com.ruska112;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CollectionsDemo {
     public static int getCountStringsStartingWith(ArrayList<String> strings, char c) {
         if (strings == null) {
             throw new IllegalArgumentException();
         }
-        int result = 0;
-        for (String str : strings) {
-            if (!"".equals(str) && str.startsWith(String.valueOf(c))) {
-                result++;
-            }
-        }
-        return result;
+        return (int) strings.stream().filter(n -> n.startsWith(String.valueOf(c))).count();
     }
 
     public static ArrayList<Human> getNamesakesArrayList(ArrayList<Human> humans, Human namesake) {
@@ -24,13 +19,7 @@ public class CollectionsDemo {
         if (namesake == null) {
             throw new IllegalArgumentException();
         }
-        ArrayList<Human> result = new ArrayList<>(humans.size());
-        for (Human human : humans) {
-            if (human.getSurname().equals(namesake.getSurname())) {
-                result.add(human);
-            }
-        }
-        return result;
+        return humans.stream().filter(n -> n.getSurname().equals(namesake.getSurname())).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public static ArrayList<Human> deleteHumanInArrayList(ArrayList<Human> humans, Human delete) {
@@ -40,13 +29,7 @@ public class CollectionsDemo {
         if (delete == null) {
             throw new IllegalArgumentException();
         }
-        ArrayList<Human> result = new ArrayList<>(humans.size());
-        for (Human human : humans) {
-            if (!delete.equals(human)) {
-                result.add(new Human(human.getSurname(), human.getName(), human.getFatherName(), human.getAge()));
-            }
-        }
-        return result;
+        return humans.stream().filter(n -> !n.equals(delete)).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public static ArrayList<Set<Integer>> getSetsNotIntersectWith(ArrayList<Set<Integer>> setArrayList, Set<Integer> integerSet) {
