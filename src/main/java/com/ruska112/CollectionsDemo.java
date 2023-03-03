@@ -173,4 +173,31 @@ public class CollectionsDemo {
         }
         return result;
     }
+
+    public static Map<Integer, Map<Character, ArrayList<Human>>> getAgeCharHumanListMap(Set<Human> humanSet) {
+        if (humanSet == null) {
+            throw new IllegalArgumentException();
+        }
+        HumanComparator humanComparator = new HumanComparator();
+        ArrayList<Human> humanArrayList = new ArrayList<>();
+        Map<Character, ArrayList<Human>> characterHumanListMap = new HashMap<>();
+        Map<Integer, Map<Character, ArrayList<Human>>> result = new HashMap<>();
+        int age;
+        char letter;
+        for (Human human0 : humanSet) {
+            age = human0.getAge();
+            letter = human0.getSurname().charAt(0);
+            for (Human human1 : humanSet) {
+                if (age == human1.getAge() && letter == human1.getSurname().charAt(0)) {
+                    humanArrayList.add(human1);
+                }
+            }
+            humanArrayList.sort(humanComparator);
+            characterHumanListMap.put(letter, new ArrayList<>(humanArrayList));
+            humanArrayList.clear();
+            result.put(age, new HashMap<>(characterHumanListMap));
+            characterHumanListMap.clear();
+        }
+        return result;
+    }
 }
