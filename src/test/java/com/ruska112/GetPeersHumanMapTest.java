@@ -20,20 +20,20 @@ public class GetPeersHumanMapTest {
     @Before
     public void setUp() {
         humanSet.add(new Human("1", "1", "1", 1));
-        humanSet.add(new Student("1", "1", "1", 2, "1"));
-        humanSet.add(new Human("1", "1", "1", 3));
+        humanSet.add(new Student("2", "2", "2", 2, "2"));
+        humanSet.add(new Human("3", "3", "3", 3));
         humanSet.add(new Student("1", "1", "1", 1, "1"));
-        humanSet.add(new Student("1", "1", "1", 2, "1"));
-        humanSet.add(new Human("1", "1", "1", 1));
+        humanSet.add(new Student("22", "22", "22", 2, "22"));
+        humanSet.add(new Human("11", "11", "11", 1));
 
         human0.add(new Human("1", "1", "1", 1));
+        human0.add(new Human("11", "11", "11", 1));
         human0.add(new Student("1", "1", "1", 1, "1"));
-        human0.add(new Human("1", "1", "1", 1));
 
-        human1.add(new Student("1", "1", "1", 2, "1"));
-        human1.add(new Student("1", "1", "1", 2, "1"));
+        human1.add(new Student("22", "22", "22", 2, "22"));
+        human1.add(new Student("2", "2", "2", 2, "2"));
 
-        human2.add(new Human("1", "1", "1", 3));
+        human2.add(new Human("3", "3", "3", 3));
 
         humanArrayListMap.put(1, human0);
         humanArrayListMap.put(2, human1);
