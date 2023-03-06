@@ -21,7 +21,8 @@ public class PhoneBook {
         if (map.containsKey(K)) {
             map.get(K).add(V);
         } else {
-            map.put(K, new ArrayList<>(List.of(V)));
+            map.put(K, new ArrayList<>());
+            map.get(K).add(V);
         }
     }
 
@@ -87,5 +88,18 @@ public class PhoneBook {
             }
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PhoneBook phoneBook = (PhoneBook) o;
+        return Objects.equals(map, phoneBook.map);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(map);
     }
 }
