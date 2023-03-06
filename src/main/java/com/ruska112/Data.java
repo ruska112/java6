@@ -1,9 +1,10 @@
 package com.ruska112;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
 
-public class Data {
+public class Data implements Iterable<Integer> {
     private String name;
     private Group[] groups;
 
@@ -48,6 +49,10 @@ public class Data {
         groups[index] = element;
     }
 
+    public Group[] getGroups() {
+        return groups;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,5 +66,32 @@ public class Data {
         int result = Objects.hash(name);
         result = 31 * result + Arrays.hashCode(groups);
         return result;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {
+            private int currentIndex;
+            private int currentGroupIndex;
+
+            @Override
+            public boolean hasNext() {
+                return currentGroupIndex < groups.length && currentIndex <= groups[currentGroupIndex].getData().length;
+            }
+
+            @Override
+            public Integer next() {
+                if (currentIndex == groups[currentGroupIndex].getData().length) {
+                    currentGroupIndex++;
+                    currentIndex = 0;
+                }
+                if (groups[currentGroupIndex].getData().length > 0) {
+                    return groups[currentGroupIndex].getData()[currentIndex++];
+                } else {
+                    currentIndex = 0;
+                    return groups[currentGroupIndex++].getData()[currentIndex];
+                }
+            }
+        };
     }
 }

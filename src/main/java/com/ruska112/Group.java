@@ -39,6 +39,10 @@ public class Group {
         data[index] = element;
     }
 
+    public int[] getData() {
+        return data;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
