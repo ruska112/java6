@@ -18,6 +18,9 @@ public class PhoneBook {
         if (V == null) {
             throw new IllegalArgumentException();
         }
+        if (this.getHumanWithPhone(V) != null) {
+            throw new IllegalArgumentException();
+        }
         if (map.containsKey(K)) {
             map.get(K).add(V);
         } else {
@@ -34,17 +37,9 @@ public class PhoneBook {
             throw new IllegalArgumentException();
         } else {
             map.get(K).remove(V);
-        }
-    }
-
-    public void removePhone(Human K, int V) {
-        if (K == null) {
-            throw new IllegalArgumentException();
-        }
-        if (!map.containsKey(K)) {
-            throw new IllegalArgumentException();
-        } else {
-            map.get(K).remove(V);
+            if (map.get(K).isEmpty()) {
+                map.remove(K);
+            }
         }
     }
 

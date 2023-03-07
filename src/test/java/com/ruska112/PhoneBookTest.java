@@ -66,6 +66,33 @@ public class PhoneBookTest {
     }
 
     @Test
+    public void addPhoneTest0() {
+        phones0.add("1123");
+        phoneBook.addPhone(human0, "1123");
+        assertArrayEquals(phones0.toArray(), phoneBook.getAllPhone(human0).toArray());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addPhoneTest1() {
+        phoneBook.addPhone(new Human("9", "9", "9", 9), "1120");
+    }
+
+    @Test
+    public void removePhoneTest0() {
+        phones0.remove("1122");
+        phoneBook.removePhone(human0, "1122");
+        assertArrayEquals(phones0.toArray(), phoneBook.getAllPhone(human0).toArray());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void removePhoneTest1() {
+        phoneBook.removePhone(human0, "1120");
+        phoneBook.removePhone(human0, "1121");
+        phoneBook.removePhone(human0, "1122");
+        phoneBook.getAllPhone(human0);
+    }
+
+    @Test
     public void getAllPhoneTest0() {
         assertArrayEquals(phones0.toArray(), phoneBook.getAllPhone(human0).toArray());
     }

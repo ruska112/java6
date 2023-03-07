@@ -167,19 +167,10 @@ public class CollectionsDemo {
         Map<Integer, Map<Character, ArrayList<Human>>> result = new HashMap<>();
         int age;
         char letter;
-        for (Human human0 : humanSet) {
-            age = human0.getAge();
-            letter = human0.getSurname().charAt(0);
-            for (Human human1 : humanSet) {
-                if (age == human1.getAge() && letter == human1.getSurname().charAt(0)) {
-                    humanArrayList.add(human1);
-                }
-            }
-            humanArrayList.sort(humanComparator);
-            characterHumanListMap.put(letter, new ArrayList<>(humanArrayList));
-            humanArrayList.clear();
-            result.put(age, new HashMap<>(characterHumanListMap));
-            characterHumanListMap.clear();
+        var integerHumanListMap = getPeersHumanMap(humanSet);
+        for (Map.Entry<Integer, ArrayList<Human>> humansEntry : integerHumanListMap.entrySet()) {
+            age = humansEntry.getKey();
+
         }
         return result;
     }

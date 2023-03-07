@@ -76,7 +76,9 @@ public class Data implements Iterable<Integer> {
 
             @Override
             public boolean hasNext() {
-                return currentGroupIndex < groups.length && currentIndex <= groups[currentGroupIndex].getData().length;
+                return currentIndex <= groups[currentGroupIndex].getData().length
+                        ? currentGroupIndex < groups.length
+                        : currentIndex < groups[currentGroupIndex - 1].getData().length;
             }
 
             @Override
@@ -84,6 +86,7 @@ public class Data implements Iterable<Integer> {
                 if (currentIndex == groups[currentGroupIndex].getData().length) {
                     currentGroupIndex++;
                     currentIndex = 0;
+//                    return groups[currentGroupIndex++].getData()[currentIndex];
                 }
                 if (groups[currentGroupIndex].getData().length > 0) {
                     return groups[currentGroupIndex].getData()[currentIndex++];
