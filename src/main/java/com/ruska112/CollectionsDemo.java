@@ -9,7 +9,7 @@ public class CollectionsDemo {
         if (strings == null) {
             throw new IllegalArgumentException();
         }
-        return (int) strings.stream().filter(n -> n.startsWith(String.valueOf(c))).count();
+        return (int) strings.stream().filter(x -> x.startsWith(String.valueOf(c))).count();
     }
 
     public static ArrayList<Human> getNamesakesArrayList(ArrayList<Human> humans, Human namesake) {
@@ -19,7 +19,7 @@ public class CollectionsDemo {
         if (namesake == null) {
             throw new IllegalArgumentException();
         }
-        return humans.stream().filter(n -> n.getSurname().equals(namesake.getSurname())).collect(Collectors.toCollection(ArrayList::new));
+        return humans.stream().filter(x -> x.getSurname().equals(namesake.getSurname())).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public static ArrayList<Human> deleteHumanInArrayList(ArrayList<Human> humans, Human delete) {
@@ -29,7 +29,7 @@ public class CollectionsDemo {
         if (delete == null) {
             throw new IllegalArgumentException();
         }
-        return humans.stream().filter(n -> !n.equals(delete)).collect(Collectors.toCollection(ArrayList::new));
+        return humans.stream().filter(x -> !x.equals(delete)).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public static ArrayList<Set<Integer>> getSetsNotIntersectWith(ArrayList<Set<Integer>> setArrayList, Set<Integer> integerSet) {

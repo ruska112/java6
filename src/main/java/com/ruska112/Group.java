@@ -1,9 +1,10 @@
 package com.ruska112;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
 
-public class Group {
+public class Group implements Iterable<Integer> {
     private int id;
     private int[] data;
 
@@ -56,5 +57,10 @@ public class Group {
         int result = Objects.hash(id);
         result = 31 * result + Arrays.hashCode(data);
         return result;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new GroupIterator(this);
     }
 }

@@ -70,31 +70,6 @@ public class Data implements Iterable<Integer> {
 
     @Override
     public Iterator<Integer> iterator() {
-        return new Iterator<Integer>() {
-            private int currentIndex;
-            private int currentGroupIndex;
-
-            @Override
-            public boolean hasNext() {
-                return currentIndex <= groups[currentGroupIndex].getData().length
-                        ? currentGroupIndex < groups.length
-                        : currentIndex < groups[currentGroupIndex - 1].getData().length;
-            }
-
-            @Override
-            public Integer next() {
-                if (currentIndex == groups[currentGroupIndex].getData().length) {
-                    currentGroupIndex++;
-                    currentIndex = 0;
-//                    return groups[currentGroupIndex++].getData()[currentIndex];
-                }
-                if (groups[currentGroupIndex].getData().length > 0) {
-                    return groups[currentGroupIndex].getData()[currentIndex++];
-                } else {
-                    currentIndex = 0;
-                    return groups[currentGroupIndex++].getData()[currentIndex];
-                }
-            }
-        };
+        return new DataIterator(this);
     }
 }
