@@ -170,7 +170,16 @@ public class CollectionsDemo {
         var integerHumanListMap = getPeersHumanMap(humanSet);
         for (Map.Entry<Integer, ArrayList<Human>> humansEntry : integerHumanListMap.entrySet()) {
             age = humansEntry.getKey();
-
+            letter = humansEntry.getValue().get(0).getSurname().charAt(0);
+            for (Human human : humansEntry.getValue()) {
+                if (human.getAge() == age && human.getSurname().charAt(0) == letter) {
+                    humanArrayList.add(human);
+                }
+            }
+            humanArrayList.sort(humanComparator);
+            characterHumanListMap.put(letter, humanArrayList);
+            humanArrayList.clear();
+            result.put(age, characterHumanListMap);
         }
         return result;
     }
