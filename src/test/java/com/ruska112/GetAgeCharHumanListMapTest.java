@@ -21,35 +21,60 @@ public class GetAgeCharHumanListMapTest {
 
     Map<Integer, Map<Character, ArrayList<Human>>> integerCharacterHumanListMap = new HashMap<>();
 
-    @Before
-    public void setUp() {
-        humanSet.add(new Human("1", "1", "1", 1));
-        humanSet.add(new Student("2", "2", "2", 2, "2"));
-        humanSet.add(new Human("3", "3", "3", 3));
-        humanSet.add(new Student("1", "1", "1", 1, "1"));
-        humanSet.add(new Student("22", "22", "22", 2, "22"));
-        humanSet.add(new Human("11", "11", "11", 1));
 
-        human0.add(new Human("1", "1", "1", 1));
-        human0.add(new Student("1", "1", "1", 1, "1"));
-        human0.add(new Human("11", "11", "11", 1));
+    @Test
+    public void getAgeCharHumanListMapTest0() {
+        humanSet.add(new Human("A", "1", "1", 1));
+        humanSet.add(new Student("B", "2", "2", 2, "2"));
+        humanSet.add(new Human("C", "3", "3", 3));
+        humanSet.add(new Student("Aa", "1", "1", 1, "1"));
+        humanSet.add(new Student("Bb", "22", "22", 2, "22"));
+        humanSet.add(new Human("Aaa", "11", "11", 1));
 
-        human1.add(new Student("2", "2", "2", 2, "2"));
-        human1.add(new Student("22", "22", "22", 2, "22"));
+        human0.add(new Human("A", "1", "1", 1));
+        human0.add(new Student("Aa", "1", "1", 1, "1"));
+        human0.add(new Human("Aaa", "11", "11", 1));
 
-        human2.add(new Human("3", "3", "3", 3));
+        human1.add(new Student("B", "2", "2", 2, "2"));
+        human1.add(new Student("Bb", "22", "22", 2, "22"));
 
-        humanArrayListMap0.put('1', human0);
-        humanArrayListMap1.put('2', human1);
-        humanArrayListMap2.put('3', human2);
+        human2.add(new Human("C", "3", "3", 3));
+
+        humanArrayListMap0.put('A', human0);
+        humanArrayListMap1.put('B', human1);
+        humanArrayListMap2.put('C', human2);
 
         integerCharacterHumanListMap.put(3, humanArrayListMap2);
         integerCharacterHumanListMap.put(2, humanArrayListMap1);
         integerCharacterHumanListMap.put(1, humanArrayListMap0);
+        assertEquals(integerCharacterHumanListMap, getAgeCharHumanListMap(humanSet));
     }
 
     @Test
-    public void getAgeCharHumanListMapTest() {
+    public void getAgeCharHumanListMapTest1() {
+        humanSet.add(new Human("A", "1", "1", 1));
+        humanSet.add(new Student("A", "2", "2", 2, "2"));
+        humanSet.add(new Human("A", "3", "3", 3));
+        humanSet.add(new Student("Aa", "1", "1", 1, "1"));
+        humanSet.add(new Student("Ab", "22", "22", 2, "22"));
+        humanSet.add(new Human("Aaa", "11", "11", 1));
+
+        human0.add(new Human("A", "1", "1", 1));
+        human0.add(new Student("Aa", "1", "1", 1, "1"));
+        human0.add(new Human("Aaa", "11", "11", 1));
+
+        human1.add(new Student("A", "2", "2", 2, "2"));
+        human1.add(new Student("Ab", "22", "22", 2, "22"));
+
+        human2.add(new Human("A", "3", "3", 3));
+
+        humanArrayListMap0.put('A', human0);
+        humanArrayListMap1.put('A', human1);
+        humanArrayListMap2.put('A', human2);
+
+        integerCharacterHumanListMap.put(3, humanArrayListMap2);
+        integerCharacterHumanListMap.put(2, humanArrayListMap1);
+        integerCharacterHumanListMap.put(1, humanArrayListMap0);
         assertEquals(integerCharacterHumanListMap, getAgeCharHumanListMap(humanSet));
     }
 }
