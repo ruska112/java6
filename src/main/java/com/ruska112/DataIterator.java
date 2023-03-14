@@ -22,7 +22,11 @@ public class DataIterator implements Iterator<Integer> {
             if (currentGroupIndex + 1 < groups.length) {
                 groupIterator = new GroupIterator(groups[++currentGroupIndex]);
                 while (groups[currentGroupIndex].getSize() <= 0) {
-                    groupIterator = new GroupIterator(groups[++currentGroupIndex]);
+                    if (currentGroupIndex + 1 < groups.length) {
+                        groupIterator = new GroupIterator(groups[++currentGroupIndex]);
+                    } else {
+                        return false;
+                    }
                 }
             } else {
                 return false;

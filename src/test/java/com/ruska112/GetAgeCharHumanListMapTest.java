@@ -43,9 +43,9 @@ public class GetAgeCharHumanListMapTest {
         humanArrayListMap1.put('2', human1);
         humanArrayListMap2.put('3', human2);
 
-        integerCharacterHumanListMap.put(1, humanArrayListMap0);
-        integerCharacterHumanListMap.put(2, humanArrayListMap1);
         integerCharacterHumanListMap.put(3, humanArrayListMap2);
+        integerCharacterHumanListMap.put(2, humanArrayListMap1);
+        integerCharacterHumanListMap.put(1, humanArrayListMap0);
     }
 
     @Test

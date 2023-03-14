@@ -169,17 +169,17 @@ public class CollectionsDemo {
         char letter;
         var integerHumanListMap = getPeersHumanMap(humanSet);
         for (Map.Entry<Integer, ArrayList<Human>> humansEntry : integerHumanListMap.entrySet()) {
-            age = humansEntry.getKey();
             letter = humansEntry.getValue().get(0).getSurname().charAt(0);
             for (Human human : humansEntry.getValue()) {
-                if (human.getAge() == age && human.getSurname().charAt(0) == letter) {
+                if (human.getSurname().charAt(0) == letter) {
                     humanArrayList.add(human);
                 }
             }
             humanArrayList.sort(humanComparator);
-            characterHumanListMap.put(letter, humanArrayList);
+            characterHumanListMap.put(letter, new ArrayList<>(humanArrayList));
             humanArrayList.clear();
-            result.put(age, characterHumanListMap);
+            result.put(humansEntry.getKey(), new HashMap<>(characterHumanListMap));
+            characterHumanListMap.clear();
         }
         return result;
     }
