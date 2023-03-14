@@ -3,10 +3,10 @@ package com.ruska112;
 import org.junit.Assert.*;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.*;
 
 import static org.junit.Assert.assertArrayEquals;
+import static com.ruska112.DataDemo.getAll;
 
 public class DataTest {
 
@@ -37,5 +37,16 @@ public class DataTest {
             i++;
         }
         assertArrayEquals(result, groupArr);
+    }
+
+    @Test
+    public void getAllTest0() {
+        var data = new Data("data", new Group(0, 0, 1, 2),
+                new Group(1, 3, 4, 5, 6), new Group(2),
+                new Group(3), new Group(4, 7, 8, 9));
+
+        ArrayList<Integer> result = new ArrayList<>();
+        Collections.addAll(result, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        assertArrayEquals(result.toArray(), getAll(data).toArray());
     }
 }
